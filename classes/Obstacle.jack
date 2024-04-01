@@ -1,0 +1,18 @@
+class Obstacle {
+    field int x, y; // Position of the obstacle
+
+    constructor Obstacle new() {
+        // Initialize the obstacle's position
+        return this;
+    }
+
+    method void generateRandom() {
+        // Implement generating random obstacles
+        return;
+    }
+
+    method void checkCollision(Dinosaur dino) {
+        // Implement collision detection with the dinosaur
+        return;
+    }
+}

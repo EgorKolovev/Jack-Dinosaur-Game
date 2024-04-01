@@ -1,0 +1,13 @@
+class Ground {
+    field int x; // Position of the ground
+
+    constructor Ground new() {
+        // Initialize the ground's position
+        return this;
+    }
+
+    method void scroll() {
+        // Implement scrolling the ground to create movement
+        return;
+    }
+}

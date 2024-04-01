@@ -1,0 +1,11 @@
+class Utils {
+    function int generateRandom(int min, int max) {
+        // Implement random number generation
+        return 0;
+    }
+
+    function char handleInput() {
+        // Implement handling keyboard input
+        return 0;
+    }
+}

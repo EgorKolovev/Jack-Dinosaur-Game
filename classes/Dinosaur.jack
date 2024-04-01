@@ -1,0 +1,24 @@
+class Dinosaur {
+    field int x, y; // Position of the dinosaur
+    field boolean isJumping, isDucking; // Flags for jumping and ducking
+
+    constructor Dinosaur new() {
+        // Initialize the dinosaur's position and flags
+        return this;
+    }
+
+    method void jump() {
+        // Implement jumping functionality
+        return;
+    }
+
+    method void duck() {
+        // Implement ducking functionality
+        return;
+    }
+
+    method void checkCollision() {
+        // Implement collision detection with obstacles
+        return;
+    }
+}
