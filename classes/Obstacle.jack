@@ -1,15 +1,18 @@
 class Obstacle {
+    field int legacyX, legacyY;
     field int x, y; // Position of the obstacle
+    field int sizeX, sizeY;
+    field boolean killDino;
 
-    constructor Obstacle new(int Ax, int Ay) {
-        let x = Ax;
-        let y = Ay;
-
+    constructor Obstacle new(int Ax, int Ay, int AsizeX, AsizeY) {
+        do createObstacle(Ax, Ay, AsizeX, AsizeY);
         return this;
     }
 
     method void run() {
-        // Implement generating random obstacles
+        do inTheEnd();
+        do drawObstacle();
+        do checkCollision();
         return;
     }
 
@@ -17,5 +20,28 @@ class Obstacle {
         // Implement collision detection with the dinosaur
         
         return;
+    }
+
+    method void drawObstacle(){
+        //рисуем квадрат
+    }
+
+    method void inTheEnd(){
+        if ((x + sizeX) > 510)
+            do createObstacle(legacyX, legacyY, AsizeX, AsizeY);
+    }
+
+    method void createObstacle(int Ax, int Ay, int AsizeX, AsizeY){
+        let x = Ax;
+        let y = Ay;
+        let sizeX = AsizeX;
+        let sizeX = AsizeY;
+
+        let legacyX = x;
+        let legacyY = y;
+    }
+
+    method boolean isDead(){
+        return killDino;
     }
 }

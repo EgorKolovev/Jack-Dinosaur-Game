@@ -1,17 +1,31 @@
 function Dinosaur.new 0
-push constant 6
+push constant 8
 call Memory.alloc 1
 pop pointer 0
 push argument 0
 pop this 0
 push argument 1
 pop this 1
-push constant 60
-pop this 5
 push argument 2
+pop this 2
+push argument 3
+pop this 3
+push constant 60
+pop this 6
+push argument 4
 call Ground.new 1
-pop this 4
+pop this 7
 push pointer 0
+return
+function Dinosaur.sizeX 0
+push argument 0
+pop pointer 0
+push this 2
+return
+function Dinosaur.sizeY 0
+push argument 0
+pop pointer 0
+push this 3
 return
 function Dinosaur.run 0
 push argument 0
@@ -25,7 +39,7 @@ pop temp 0
 push pointer 0
 call Dinosaur.drawDino 1
 pop temp 0
-push this 4
+push this 7
 call Ground.drawGround 1
 pop temp 0
 push constant 5
@@ -36,21 +50,21 @@ return
 function Dinosaur.startJump 0
 push argument 0
 pop pointer 0
-push this 3
+push this 5
 not
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
 push constant 0
 not
-pop this 2
+pop this 4
 label IF_FALSE0
 push constant 0
 return
 function Dinosaur.jumping 0
 push argument 0
 pop pointer 0
-push this 2
+push this 4
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
@@ -62,7 +76,7 @@ push constant 1
 sub
 pop this 1
 push this 1
-push this 5
+push this 6
 lt
 if-goto IF_TRUE1
 goto IF_FALSE1
@@ -78,16 +92,16 @@ function Dinosaur.startFall 0
 push argument 0
 pop pointer 0
 push constant 0
-pop this 2
+pop this 4
 push constant 0
 not
-pop this 3
+pop this 5
 push constant 0
 return
 function Dinosaur.falling 0
 push argument 0
 pop pointer 0
-push this 3
+push this 5
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
@@ -102,7 +116,7 @@ push this 1
 push pointer 0
 call Dinosaur.sizeY 1
 add
-push this 4
+push this 7
 call Ground.groundPosition 1
 eq
 if-goto IF_TRUE1
@@ -119,7 +133,7 @@ function Dinosaur.stopFall 0
 push argument 0
 pop pointer 0
 push constant 0
-pop this 3
+pop this 5
 push constant 0
 return
 function Dinosaur.drawDino 0
@@ -181,14 +195,4 @@ add
 call Screen.drawRectangle 4
 pop temp 0
 push constant 0
-return
-function Dinosaur.sizeX 0
-push argument 0
-pop pointer 0
-push constant 40
-return
-function Dinosaur.sizeY 0
-push argument 0
-pop pointer 0
-push constant 60
 return

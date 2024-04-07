@@ -2,11 +2,14 @@ class Game {
     field int score;
     field boolean isGameOver;
     field Dinosaur dino;
-    field Obstacle obstacle;
+    field Obstacle obstacleLeft;
+    field Obstacle obstacleRight;
+    field Obstacle obstacleMidle;
+
 
     constructor Game new() {
         let score = 0;
-        let dino = Dinosaur.new(235, 190,40,60, 250);
+        let dino = Dinosaur.new(235, 190, 40, 60, 250);
         return this;
     }
 

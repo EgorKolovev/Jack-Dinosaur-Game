@@ -6,8 +6,10 @@ push constant 0
 pop this 0
 push constant 235
 push constant 190
+push constant 40
+push constant 60
 push constant 250
-call Dinosaur.new 3
+call Dinosaur.new 5
 pop this 2
 push pointer 0
 return
