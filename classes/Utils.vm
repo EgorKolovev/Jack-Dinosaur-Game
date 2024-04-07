@@ -1,0 +1,6 @@
+function Utils.generateRandom 0
+push constant 0
+return
+function Utils.handleInput 0
+push constant 0
+return

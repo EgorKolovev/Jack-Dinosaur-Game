@@ -1,6 +1,6 @@
 class Main {
     function void main() {
-        Game game;
+        var Game game;
         let game = Game.new();
         do game.run(); 
         return;

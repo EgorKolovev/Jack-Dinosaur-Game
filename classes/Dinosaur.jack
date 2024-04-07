@@ -1,24 +1,67 @@
 class Dinosaur {
     field int x, y; // Position of the dinosaur
-    field boolean isJumping, isDucking; // Flags for jumping and ducking
+    field boolean isJumping, isFalling;
 
-    constructor Dinosaur new() {
-        // Initialize the dinosaur's position and flags
+    field Ground ground;
+
+    constructor Dinosaur new(int Ax, int Ay, int groundPosition) {
+        let x = Ax;
+        let y = Ay;
+        let ground = Ground.new(groundPosition);
+
         return this;
     }
 
-    method void jump() {
-        // Implement jumping functionality
+    method void run(){
+        do jumping();
+        do falling();
+
+        do drawDino();
+        do ground.drawGround();
         return;
     }
 
-    method void duck() {
-        // Implement ducking functionality
+    
+    method void startJump() {
+        let isJumping = true;
         return;
     }
 
-    method void checkCollision() {
-        // Implement collision detection with obstacles
+    method void jumping(){
+        if (isJumping){
+            let y = y - 1;
+            if (y < 35){
+                do startFall();
+            }
+        }
         return;
     }
+
+    method void startFall(){
+        let isJumping = false;
+        let isFalling = true;
+        return;
+    }
+
+    method void falling(){
+        if (isFalling){
+            let y = y + 1;
+            if (y = ground.groundPosition()){
+                do stopFall();
+            }
+        }
+        return;
+    }
+
+    method void stopFall(){
+        let isFalling = false;
+        return;
+    }
+
+    method void drawDino(){
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x, y, x + 5, y + 10);
+        return;
+    }
+
 }

@@ -1,13 +1,20 @@
 class Ground {
-    field int x; // Position of the ground
+    field int y; // Position of the ground
 
-    constructor Ground new() {
-        // Initialize the ground's position
+    constructor Ground new(int Ay) {
+        let y = Ay;
         return this;
     }
 
-    method void scroll() {
-        // Implement scrolling the ground to create movement
+
+    method int groundPosition(){
+        return y;
+    }
+
+    method void drawGround(){
+        do Screen.setColor(true);
+        do Screen.drawRectangle(0, y, 511, 255);
         return;
     }
+
 }

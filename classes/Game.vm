@@ -1,0 +1,40 @@
+function Game.new 0
+push constant 3
+call Memory.alloc 1
+pop pointer 0
+push constant 0
+pop this 0
+push constant 1
+push constant 44
+push constant 44
+call Dinosaur.new 3
+pop this 2
+push pointer 0
+return
+function Game.run 1
+push argument 0
+pop pointer 0
+push constant 0
+not
+pop local 0
+label WHILE_EXP0
+push local 0
+not
+if-goto WHILE_END0
+push this 2
+call Dinosaur.run 1
+pop temp 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function Game.updateScore 0
+push argument 0
+pop pointer 0
+push constant 0
+return
+function Game.checkGameOver 0
+push argument 0
+pop pointer 0
+push constant 0
+return
