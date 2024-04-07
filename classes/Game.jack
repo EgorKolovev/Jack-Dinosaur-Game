@@ -6,13 +6,12 @@ class Game {
 
     constructor Game new() {
         let score = 0;
-        let dino = Dinosaur.new(252, 250, 250);
-        let obstacle = Obstacle.new(44, 44);
+        let dino = Dinosaur.new(235, 190, 250);
         return this;
     }
+
     method void run() {
         var char key;
-
         var boolean go;
         let go = true;
 
@@ -20,8 +19,8 @@ class Game {
             let key = Keyboard.keyPressed();
             if (key = 131) {
                 do dino.startJump();
+            }
             do dino.run();
-            do obstacle.run();
         }
         return;
     }

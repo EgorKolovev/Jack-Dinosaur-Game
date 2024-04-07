@@ -1,6 +1,7 @@
 class Dinosaur {
     field int x, y, sX, sY; 
     field boolean isJumping, isFalling;
+    field int jumpHeight;
 
     field Ground ground;
 
@@ -9,10 +10,12 @@ class Dinosaur {
         let y = Ay;
         let sX = AsX;
         let sY = AsY;
+        let jumpHeight = 60;
         let ground = Ground.new(groundPosition);
 
         return this;
     }
+
     method int sizeX(){
         return sX;
     }
@@ -26,19 +29,25 @@ class Dinosaur {
 
         do drawDino();
         do ground.drawGround();
+
+        do Sys.wait(5); 
+
         return;
     }
 
     
     method void startJump() {
-        let isJumping = true;
+        if (~isFalling){
+            let isJumping = true;
+        }
         return;
     }
 
     method void jumping(){
         if (isJumping){
+            do clearDino();
             let y = y - 1;
-            if (y < 35){
+            if (y < jumpHeight){
                 do startFall();
             }
         }
@@ -53,8 +62,9 @@ class Dinosaur {
 
     method void falling(){
         if (isFalling){
+            do clearDino();
             let y = y + 1;
-            if (y = ground.groundPosition()){
+            if ((y + sizeY()) = ground.groundPosition()){
                 do stopFall();
             }
         }
@@ -68,8 +78,19 @@ class Dinosaur {
 
     method void drawDino(){
         do Screen.setColor(true);
-        do Screen.drawRectangle(x, y, x + 5, y + 10);
+        if ((x > 0) & (x < 506) & (y > 10) & (y < 255))
+        {
+            do Screen.drawRectangle(x, y, x + sizeX(), y + sizeY());
+        }
         return;
     }
+
+    method void clearDino(){
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x, y, x + sizeX(), y + sizeY());
+        return;
+    }
+
+
 
 }

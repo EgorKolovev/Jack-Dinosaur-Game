@@ -1,26 +1,38 @@
 function Game.new 0
-push constant 3
+push constant 4
 call Memory.alloc 1
 pop pointer 0
 push constant 0
 pop this 0
-push constant 1
-push constant 44
-push constant 44
+push constant 235
+push constant 190
+push constant 250
 call Dinosaur.new 3
 pop this 2
 push pointer 0
 return
-function Game.run 1
+function Game.run 2
 push argument 0
 pop pointer 0
 push constant 0
 not
-pop local 0
+pop local 1
 label WHILE_EXP0
-push local 0
+push local 1
 not
 if-goto WHILE_END0
+call Keyboard.keyPressed 0
+pop local 0
+push local 0
+push constant 131
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 2
+call Dinosaur.startJump 1
+pop temp 0
+label IF_FALSE0
 push this 2
 call Dinosaur.run 1
 pop temp 0
