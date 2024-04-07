@@ -16,14 +16,35 @@ class Obstacle {
         return;
     }
 
-    method void checkCollision(Dinosaur dino) {
-        // Implement collision detection with the dinosaur
-        
-        return;
+method void checkCollision(Dinosaur dino) {
+    // Get the coordinates and size of the dinosaur
+    var int dinoLeft, dinoRight, dinoTop, dinoBottom;
+    let dinoLeft = dino.getX();
+    let dinoRight = dinoLeft + dino.getSizeX();
+    let dinoTop = dino.getY();
+    let dinoBottom = dinoTop + dino.getSizeY();
+    
+    // Get the coordinates and size of the square
+    var int squareLeft, squareRight, squareTop, squareBottom, squareSize;
+    let squareLeft = y;
+    let squareRight = squareLeft + sizeY;
+    let squareTop = y;
+    let squareBottom = squareTop + getSizeX;
+    
+    // Check for collision by comparing coordinates and sizes
+    if (squareLeft < dinoRight && squareRight > dinoLeft &&
+        squareTop < dinoBottom && squareBottom > dinoTop) {
+        // Collision detected
+        killDino = true;
     }
+    
+    return;
+}
 
-    method void drawObstacle(){
+
+    method void drawObstacle(int size){
         //рисуем квадрат
+        do Screen.drawRectangle(x,y,x+size,y+size)
     }
 
     method void inTheEnd(){
