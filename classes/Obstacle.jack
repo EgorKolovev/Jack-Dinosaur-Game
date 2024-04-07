@@ -1,8 +1,10 @@
 class Obstacle {
     field int x, y; // Position of the obstacle
 
-    constructor Obstacle new() {
-        // Initialize the obstacle's position
+    constructor Obstacle new(int Ax, int Ay) {
+        let x = Ax;
+        let y = Ay;
+
         return this;
     }
 
@@ -13,6 +15,7 @@ class Obstacle {
 
     method void checkCollision(Dinosaur dino) {
         // Implement collision detection with the dinosaur
+        
         return;
     }
 }
