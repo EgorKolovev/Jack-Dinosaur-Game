@@ -1,15 +1,23 @@
 class Dinosaur {
-    field int x, y; // Position of the dinosaur
+    field int x, y, sX, sY; 
     field boolean isJumping, isFalling;
 
     field Ground ground;
 
-    constructor Dinosaur new(int Ax, int Ay, int groundPosition) {
+    constructor Dinosaur new(int Ax, int Ay, int AsX,int AsY, int groundPosition) {
         let x = Ax;
         let y = Ay;
+        let sX = AsX;
+        let sY = AsY;
         let ground = Ground.new(groundPosition);
 
         return this;
+    }
+    method int sizeX(){
+        return sX;
+    }
+    method int sizeY(){
+        return sY;
     }
 
     method void run(){

@@ -8,7 +8,7 @@ class Obstacle {
         return this;
     }
 
-    method void generateRandom() {
+    method void run() {
         // Implement generating random obstacles
         return;
     }
