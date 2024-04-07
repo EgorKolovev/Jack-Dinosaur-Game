@@ -6,7 +6,7 @@ class Game {
 
     constructor Game new() {
         let score = 0;
-        let dino = Dinosaur.new(235, 190, 250);
+        let dino = Dinosaur.new(235, 190,40,60, 250);
         return this;
     }
 
