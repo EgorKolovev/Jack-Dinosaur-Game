@@ -1,20 +1,161 @@
 function Obstacle.new 0
-push constant 2
+push constant 7
 call Memory.alloc 1
 pop pointer 0
+push argument 0
+pop this 2
+push argument 1
+pop this 3
+push argument 2
+pop this 4
+push argument 3
+pop this 4
 push argument 0
 pop this 0
 push argument 1
 pop this 1
+push constant 0
+pop this 6
 push pointer 0
 return
 function Obstacle.run 0
 push argument 0
 pop pointer 0
+push pointer 0
+call Obstacle.drawObstacle 1
+pop temp 0
+push pointer 0
+push argument 1
+call Obstacle.checkCollision 2
+pop temp 0
 push constant 0
 return
-function Obstacle.checkCollision 0
+function Obstacle.checkCollision 9
+push argument 0
+pop pointer 0
+push argument 1
+call Dinosaur.getX 1
+pop local 5
+push local 5
+push argument 1
+call Dinosaur.sizeX 1
+add
+pop local 6
+push argument 1
+call Dinosaur.getY 1
+pop local 7
+push local 7
+push argument 1
+call Dinosaur.sizeY 1
+add
+pop local 8
+push this 3
+pop local 0
+push local 0
+push this 4
+add
+pop local 1
+push this 3
+pop local 2
+push local 2
+push this 5
+add
+pop local 3
+push local 0
+push local 6
+lt
+push local 1
+push local 5
+gt
+and
+push local 2
+push local 8
+lt
+and
+push local 3
+push local 7
+gt
+and
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+not
+pop this 6
+label IF_FALSE0
+push constant 0
+return
+function Obstacle.drawObstacle 0
 push argument 0
 pop pointer 0
 push constant 0
+call Screen.setColor 1
+pop temp 0
+push this 2
+push constant 210
+push this 2
+push this 4
+add
+push constant 250
+call Screen.drawRectangle 4
+pop temp 0
+push this 2
+push constant 1
+add
+pop this 2
+push pointer 0
+call Obstacle.inTheEnd 1
+pop temp 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push this 2
+push constant 210
+push this 2
+push this 4
+add
+push constant 250
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function Obstacle.inTheEnd 0
+push argument 0
+pop pointer 0
+push this 2
+push this 4
+add
+push constant 510
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+push this 0
+push this 1
+push this 4
+push this 5
+call Obstacle.createObstacle 5
+pop temp 0
+label IF_FALSE0
+push constant 0
+return
+function Obstacle.createObstacle 0
+push argument 0
+pop pointer 0
+push argument 1
+pop this 2
+push argument 2
+pop this 3
+push argument 3
+pop this 4
+push argument 4
+pop this 4
+push constant 0
+return
+function Obstacle.isDead 0
+push argument 0
+pop pointer 0
+push this 6
 return

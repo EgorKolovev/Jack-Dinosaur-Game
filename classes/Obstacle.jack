@@ -4,62 +4,79 @@ class Obstacle {
     field int sizeX, sizeY;
     field boolean killDino;
 
-    constructor Obstacle new(int Ax, int Ay, int AsizeX, AsizeY) {
-        do createObstacle(Ax, Ay, AsizeX, AsizeY);
+    constructor Obstacle new(int Ax, int Ay, int AsizeX, int AsizeY) 
+    {
+        let x = Ax;
+        let y = Ay;
+        let sizeX = AsizeX;
+        let sizeX = AsizeY;
+
+        let legacyX = Ax;
+        let legacyY = Ay;
+
+        let killDino = false;
+
         return this;
     }
 
-    method void run() {
-        do inTheEnd();
+    method void run(Dinosaur dino) {
         do drawObstacle();
-        do checkCollision();
+        do checkCollision(dino);
         return;
     }
 
 method void checkCollision(Dinosaur dino) {
     // Get the coordinates and size of the dinosaur
-    var int dinoLeft, dinoRight, dinoTop, dinoBottom;
-    let dinoLeft = dino.getX();
-    let dinoRight = dinoLeft + dino.getSizeX();
-    let dinoTop = dino.getY();
-    let dinoBottom = dinoTop + dino.getSizeY();
-    
-    // Get the coordinates and size of the square
     var int squareLeft, squareRight, squareTop, squareBottom, squareSize;
+    var int dinoLeft, dinoRight, dinoTop, dinoBottom;
+
+    let dinoLeft = dino.getX();
+    let dinoRight = dinoLeft + dino.sizeX();
+    let dinoTop = dino.getY();
+    let dinoBottom = dinoTop + dino.sizeY();
+    
     let squareLeft = y;
-    let squareRight = squareLeft + sizeY;
+    let squareRight = squareLeft + sizeX;
     let squareTop = y;
-    let squareBottom = squareTop + getSizeX;
+    let squareBottom = squareTop + sizeY;
     
     // Check for collision by comparing coordinates and sizes
-    if (squareLeft < dinoRight && squareRight > dinoLeft &&
-        squareTop < dinoBottom && squareBottom > dinoTop) {
-        // Collision detected
-        killDino = true;
+    if ((squareLeft < dinoRight) & (squareRight > dinoLeft) & (squareTop < dinoBottom) & (squareBottom > dinoTop)) 
+    {
+        let killDino = true;
+
     }
     
     return;
 }
 
 
-    method void drawObstacle(int size){
-        //рисуем квадрат
-        do Screen.drawRectangle(x,y,x+size,y+size)
+    method void drawObstacle(){
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x, 210, x+sizeX, 250);
+        let x = x + 1;
+
+        do inTheEnd();
+
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x, 210, x+sizeX, 250);
+
+        return;
     }
 
     method void inTheEnd(){
-        if ((x + sizeX) > 510)
-            do createObstacle(legacyX, legacyY, AsizeX, AsizeY);
+        if ((x + sizeX) > 510){
+            do createObstacle(legacyX, legacyY, sizeX, sizeY);
+        }
+        return;
     }
 
-    method void createObstacle(int Ax, int Ay, int AsizeX, AsizeY){
+    method void createObstacle(int Ax, int Ay, int AsizeX, int AsizeY){
         let x = Ax;
         let y = Ay;
         let sizeX = AsizeX;
         let sizeX = AsizeY;
-
-        let legacyX = x;
-        let legacyY = y;
+        return;
     }
 
     method boolean isDead(){

@@ -27,6 +27,16 @@ push argument 0
 pop pointer 0
 push this 3
 return
+function Dinosaur.getX 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function Dinosaur.getY 0
+push argument 0
+pop pointer 0
+push this 1
+return
 function Dinosaur.run 0
 push argument 0
 pop pointer 0
@@ -41,9 +51,6 @@ call Dinosaur.drawDino 1
 pop temp 0
 push this 7
 call Ground.drawGround 1
-pop temp 0
-push constant 5
-call Sys.wait 1
 pop temp 0
 push constant 0
 return

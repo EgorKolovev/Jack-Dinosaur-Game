@@ -23,15 +23,21 @@ class Dinosaur {
         return sY;
     }
 
+    method int getX(){
+        return x;
+    }
+
+    method int getY(){
+        return y;
+    }
+
     method void run(){
         do jumping();
         do falling();
 
         do drawDino();
         do ground.drawGround();
-
-        do Sys.wait(5); 
-
+        
         return;
     }
 

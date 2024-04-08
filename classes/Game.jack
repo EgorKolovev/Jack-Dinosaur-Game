@@ -3,13 +3,11 @@ class Game {
     field boolean isGameOver;
     field Dinosaur dino;
     field Obstacle obstacleLeft;
-    field Obstacle obstacleRight;
-    field Obstacle obstacleMidle;
-
 
     constructor Game new() {
         let score = 0;
         let dino = Dinosaur.new(235, 190, 40, 60, 250);
+        let obstacleLeft = Obstacle.new(0, 220, 40, 30);
         return this;
     }
 
@@ -23,10 +21,20 @@ class Game {
             if (key = 131) {
                 do dino.startJump();
             }
-            do dino.run();
+
+            do moveScene(); 
         }
         return;
     }
+
+    method void moveScene(){
+        do dino.run();
+        do obstacleLeft.run(dino);
+
+        do Sys.wait(5); 
+        return;
+    }
+
     method void updateScore() {
         // Implement updating the score
         return;
