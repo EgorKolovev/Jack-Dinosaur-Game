@@ -35,16 +35,15 @@ method void checkCollision(Dinosaur dino) {
     let dinoTop = dino.getY();
     let dinoBottom = dinoTop + dino.sizeY();
     
-    let squareLeft = y;
-    let squareRight = squareLeft + sizeX;
+    let squareLeft = x;
+    let squareRight = squareLeft + 40;
     let squareTop = y;
-    let squareBottom = squareTop + sizeY;
+    let squareBottom = squareTop + 30;
     
     // Check for collision by comparing coordinates and sizes
-    if ((squareLeft < dinoRight) & (squareRight > dinoLeft) & (squareTop < dinoBottom) & (squareBottom > dinoTop)) 
+    if ((dinoLeft < squareRight) & (dinoBottom > squareTop) & (dinoRight > squareLeft)) 
     {
         let killDino = true;
-
     }
     
     return;
@@ -72,10 +71,10 @@ method void checkCollision(Dinosaur dino) {
     }
 
     method void createObstacle(int Ax, int Ay, int AsizeX, int AsizeY){
-        let x = Ax;
-        let y = Ay;
-        let sizeX = AsizeX;
-        let sizeX = AsizeY;
+        let x = 0;
+        let y = 210;
+        let sizeX = 40;
+        let sizeX = 30;
         return;
     }
 

@@ -49,31 +49,27 @@ push argument 1
 call Dinosaur.sizeY 1
 add
 pop local 8
-push this 3
+push this 2
 pop local 0
 push local 0
-push this 4
+push constant 40
 add
 pop local 1
 push this 3
 pop local 2
 push local 2
-push this 5
+push constant 30
 add
 pop local 3
-push local 0
-push local 6
-lt
-push local 1
 push local 5
+push local 1
+lt
+push local 8
+push local 2
 gt
 and
-push local 2
-push local 8
-lt
-and
-push local 3
-push local 7
+push local 6
+push local 0
 gt
 and
 if-goto IF_TRUE0
@@ -144,13 +140,13 @@ return
 function Obstacle.createObstacle 0
 push argument 0
 pop pointer 0
-push argument 1
+push constant 0
 pop this 2
-push argument 2
+push constant 210
 pop this 3
-push argument 3
+push constant 40
 pop this 4
-push argument 4
+push constant 30
 pop this 4
 push constant 0
 return

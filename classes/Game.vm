@@ -44,6 +44,24 @@ label IF_FALSE0
 push pointer 0
 call Game.moveScene 1
 pop temp 0
+push this 3
+call Obstacle.isDead 1
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+pop local 1
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push constant 0
+push constant 0
+push constant 511
+push constant 255
+call Screen.drawRectangle 4
+pop temp 0
+label IF_FALSE1
 goto WHILE_EXP0
 label WHILE_END0
 push constant 0

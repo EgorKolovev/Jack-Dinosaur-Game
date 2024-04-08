@@ -18,11 +18,16 @@ class Game {
 
         while (go){
             let key = Keyboard.keyPressed();
+
             if (key = 131) {
                 do dino.startJump();
             }
-
             do moveScene(); 
+            if (obstacleLeft.isDead()){
+                let go = false;
+                do Screen.setColor(true);
+                do Screen.drawRectangle(0, 0, 511, 255);
+            }
         }
         return;
     }
