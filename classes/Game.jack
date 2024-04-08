@@ -21,6 +21,7 @@ class Game {
                 do dino.startJump();
             }
             do moveScene(); 
+            do updateScore();
             if (obstacleLeft.isDead()){
                 let go = false;
                 do Screen.setColor(true);
@@ -33,7 +34,6 @@ class Game {
     method void moveScene(){
         do dino.run();
         do obstacleLeft.run(dino);
-        do updateScore();
         do Sys.wait(5); 
         return;
     }
