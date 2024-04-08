@@ -4,6 +4,12 @@ class Obstacle {
     field int sizeX, sizeY;
     field boolean killDino;
 
+    field int speed;
+    field int speedDuration;
+    field in speedTimer;
+
+    field int scores;
+
     constructor Obstacle new(int Ax, int Ay, int AsizeX, int AsizeY) 
     {
         let x = Ax;
@@ -13,6 +19,12 @@ class Obstacle {
 
         let legacyX = Ax;
         let legacyY = Ay;
+
+        let speed = 1;
+        let speedDuration = 1000;
+        let speedTimer = 0;
+
+        let scores = 0;
 
         let killDino = false;
 
@@ -53,13 +65,23 @@ method void checkCollision(Dinosaur dino) {
     method void drawObstacle(){
         do Screen.setColor(false);
         do Screen.drawRectangle(x, 210, x+sizeX, 250);
-        let x = x + 1;
 
+        do moveSquare();
         do inTheEnd();
 
         do Screen.setColor(true);
         do Screen.drawRectangle(x, 210, x+sizeX, 250);
 
+        return;
+    }
+
+    method void moveSquare(){
+        let x = x + speed;
+        let speedTimer = speedTimer + 1;
+        if (speedTimer > speedDuration){
+            let speedTimer = 0;
+            let speed = speed + 1;
+        }
         return;
     }
 
@@ -71,11 +93,16 @@ method void checkCollision(Dinosaur dino) {
     }
 
     method void createObstacle(int Ax, int Ay, int AsizeX, int AsizeY){
+        let scores = scores + 1;
         let x = 0;
         let y = 210;
         let sizeX = 40;
         let sizeX = 30;
         return;
+    }
+
+    method int getScores(){
+        return scores;
     }
 
     method boolean isDead(){

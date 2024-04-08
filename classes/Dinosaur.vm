@@ -1,5 +1,5 @@
 function Dinosaur.new 0
-push constant 8
+push constant 11
 call Memory.alloc 1
 pop pointer 0
 push argument 0
@@ -10,8 +10,14 @@ push argument 2
 pop this 2
 push argument 3
 pop this 3
-push constant 60
+push constant 30
 pop this 6
+push constant 2
+pop this 8
+push constant 1500
+pop this 9
+push constant 0
+pop this 10
 push argument 4
 call Ground.new 1
 pop this 7
@@ -52,6 +58,31 @@ pop temp 0
 push this 7
 call Ground.drawGround 1
 pop temp 0
+push pointer 0
+call Dinosaur.speedUp 1
+pop temp 0
+push constant 0
+return
+function Dinosaur.speedUp 0
+push argument 0
+pop pointer 0
+push this 10
+push constant 1
+add
+pop this 10
+push this 10
+push this 9
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 8
+push constant 1
+add
+pop this 8
+push constant 0
+pop this 10
+label IF_FALSE0
 push constant 0
 return
 function Dinosaur.startJump 0
@@ -79,7 +110,7 @@ push pointer 0
 call Dinosaur.clearDino 1
 pop temp 0
 push this 1
-push constant 1
+push this 8
 sub
 pop this 1
 push this 1
@@ -116,7 +147,7 @@ push pointer 0
 call Dinosaur.clearDino 1
 pop temp 0
 push this 1
-push constant 1
+push this 8
 add
 pop this 1
 push this 1
@@ -125,7 +156,9 @@ call Dinosaur.sizeY 1
 add
 push this 7
 call Ground.groundPosition 1
-eq
+lt
+push constant 1
+add
 if-goto IF_TRUE1
 goto IF_FALSE1
 label IF_TRUE1

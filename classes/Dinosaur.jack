@@ -5,12 +5,19 @@ class Dinosaur {
 
     field Ground ground;
 
+    field int speed;
+    field int speedDuration;
+    field in speedTimer;
+
     constructor Dinosaur new(int Ax, int Ay, int AsX,int AsY, int groundPosition) {
         let x = Ax;
         let y = Ay;
         let sX = AsX;
         let sY = AsY;
-        let jumpHeight = 60;
+        let jumpHeight = 30;
+        let speed = 2;
+        let speedDuration = 1500;
+        let speedTimer = 0;
         let ground = Ground.new(groundPosition);
 
         return this;
@@ -37,7 +44,18 @@ class Dinosaur {
 
         do drawDino();
         do ground.drawGround();
-        
+
+        do speedUp();
+        return;
+    }
+
+    method void speedUp(){
+        let speedTimer = speedTimer + 1;
+        if (speedTimer > speedDuration){
+            let speed = speed + 1;
+            let speedTimer = 0;
+        }
+
         return;
     }
 
@@ -52,7 +70,7 @@ class Dinosaur {
     method void jumping(){
         if (isJumping){
             do clearDino();
-            let y = y - 1;
+            let y = y - speed;
             if (y < jumpHeight){
                 do startFall();
             }
@@ -69,8 +87,8 @@ class Dinosaur {
     method void falling(){
         if (isFalling){
             do clearDino();
-            let y = y + 1;
-            if ((y + sizeY()) = ground.groundPosition()){
+            let y = y + speed;
+            if ((y + sizeY()) < ground.groundPosition() + 1){
                 do stopFall();
             }
         }

@@ -1,11 +1,9 @@
 class Game {
-    field int score;
     field boolean isGameOver;
     field Dinosaur dino;
     field Obstacle obstacleLeft;
 
     constructor Game new() {
-        let score = 0;
         let dino = Dinosaur.new(235, 190, 40, 60, 250);
         let obstacleLeft = Obstacle.new(0, 220, 40, 30);
         return this;
@@ -35,17 +33,16 @@ class Game {
     method void moveScene(){
         do dino.run();
         do obstacleLeft.run(dino);
-
+        do updateScore();
         do Sys.wait(5); 
         return;
     }
 
     method void updateScore() {
-        // Implement updating the score
-        return;
-    }
-    method void checkGameOver() {
-        // Implement checking for game over conditions
-        return;
+        var int scores;
+        let scores = obstacleLeft.getScores();
+        do Output.printInt(scores);
+        do Output.moveCursor(0, 0);
+        return;     
     }
 }
